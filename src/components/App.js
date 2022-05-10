@@ -6,7 +6,6 @@ import Register from './Register';
 
 
 function App(){
-    console.log('entrou aqui')
 
     return(
 
