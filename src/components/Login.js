@@ -8,7 +8,7 @@ function Login (){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    async function handleSubmitLogin(e){
+    /* async function handleSubmitLogin(e){
         e.preventDefault();
 
         try {
@@ -23,7 +23,7 @@ function Login (){
 
         }
 
-    }
+    } */
 
     return (
         <>
@@ -47,7 +47,7 @@ function Login (){
                     />
 
                     {/* BOTÃO ACESSAR CONTA */}
-                    <button type="submit" onClick={handleSubmitLogin} >Acessar conta</button>
+                    <button type="submit" /* onClick={handleSubmitLogin} */ >Acessar conta</button>
                 </form>
 
             </Main>
