@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Header from './Header';
 import api from '.././components/api/api.js';
+import Footer from './Footer';
 
 function Login (){
     const [email, setEmail] = useState("");
@@ -15,18 +16,17 @@ function Login (){
     async function tryLogin(e){
         e.preventDefault();
 
-        try {
-            await api.post('/login', {
-                email,
-                password
-            });
-            console.log(email, password);
-            navigator("/home")
-        } 
-        catch (error) {
+        api.post('/login', { email, password })
+
+            .then((response)=>{
+                console.log(email, password);
+                navigator("/home");
+            })
+
+            .catch ((error)=> {
             alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
             console.log(error.response);
-        }
+            });
 
     }
 
@@ -43,8 +43,9 @@ function Login (){
                 <p className='newUser'>Criar conta</p>
                 
                 <Navegate to='cadastro'><ButtonRegister><p>Criar conta</p></ButtonRegister></Navegate>
-                
+                <Footer/>
             </Main>
+
         </>
 
     )
