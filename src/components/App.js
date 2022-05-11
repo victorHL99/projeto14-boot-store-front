@@ -1,14 +1,18 @@
-import { BrowserRouter,Routes,Route } from "react-router-dom";
-
+import { useState, useContext } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./Home";
 import Item from "./Item";
 import Login from "./Login";
 import Register from './Register';
+import TokenContext from "./context/Token";
+
 
 
 function App(){
-
+    const [token, setToken] = useState({token:null});
+    
+    
     return(
 
         <BrowserRouter>
