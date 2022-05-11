@@ -20,12 +20,10 @@ function Login (){
                 email,
                 password
             });
-
             console.log(email, password);
             navigator("/home")
-
-
-        } catch (error) {
+        } 
+        catch (error) {
             alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
             console.log(error.response);
         }
