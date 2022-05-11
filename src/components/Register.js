@@ -10,7 +10,8 @@ function Register (){
     const navigate = useNavigate();
 
     const [datasToRegister, setDatas] = useState({name:'', email:'', password:'', passwordConf:''});
-    console.l
+    console.log(datasToRegister);
+
     function tryRegister(event){
 
         event.preventDefault();
@@ -18,15 +19,14 @@ function Register (){
         api
         .post('/register', datasToRegister)
             .then((response)=>{
-                console.log('O registro ta safe!', response.data);
+                console.log('O registro ta safe!', response.data); // apagar esse console
+                
+                navigate('/');
             })
             .catch((err) => {
                 console.log('Erro ao cadastrar usuario', err)
             })
-
     }
-
-
 
     return(
         <>
@@ -45,16 +45,54 @@ function Register (){
                 <p>Já é cliente? <span onClick={()=> navigate('/login')} >Entrar</span></p>
 
             </Main>
-
-         
         </>
-        
-
     )
 }
 
 
 const Main = styled.main `
+
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        margin-top: 75px;
+
+    }
+    input{
+        width: 330px;
+        height: 40px;
+        margin-bottom:10px;
+        border-radius: 5px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        border: 1px solid #D5D5D5;
+        
+    }
+    button{
+        margin-top: 25px;
+        margin-bottom: 25px;
+        height: 40px;
+        background-color: lightgreen;
+        border-radius: 5px;
+        color: #fff;
+        border: none;
+        font-size: 25px;
+    }
+   
+    span{
+        color: blue;
+ 
+    }
+
+
 
 
 
