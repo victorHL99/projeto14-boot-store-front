@@ -23,7 +23,7 @@ export default function Footer() {
 }
 
 const FooterPage = styled.div`
-    position: absolute;
+    position: fixed;
     z-index: 1;
     display: flex;
     justify-content: space-between;

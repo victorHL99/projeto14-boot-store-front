@@ -60,6 +60,7 @@ const Main = styled.main`
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    top: 6%;
 
     .user {
         position: relative;
