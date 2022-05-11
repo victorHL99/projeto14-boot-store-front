@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -9,6 +9,8 @@ import api from '.././components/api/api.js';
 function Login (){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigator = useNavigate();
 
     async function tryLogin(e){
         e.preventDefault();
@@ -20,11 +22,12 @@ function Login (){
             });
 
             console.log(email, password);
-
+            navigator("/home")
 
 
         } catch (error) {
-            console.log(email, password);
+            alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
+            console.log(error.response);
         }
 
     }
