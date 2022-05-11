@@ -26,7 +26,7 @@ function Header (){
 
 const HeadPage = styled.header`
 
-    background-color: #5C3782;
+    background-color: #FF4500;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,10 +38,12 @@ const HeadPage = styled.header`
     }
     .logo .geek{
         font-family: 'Press Start 2P', cursive;
+        color: green;
        
     }
     .logo .store{
          font-family: 'Parisienne';
+         color: darkblue;
     }
 
 
