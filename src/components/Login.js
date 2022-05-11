@@ -42,7 +42,7 @@ function Login (){
                 </form>
                 <p className='newUser'>Criar conta</p>
                 
-                <Navegate to='cadastro'><ButtonRegister><p>Criar conta</p></ButtonRegister></Navegate>
+                <Navegate to='/cadastro'><ButtonRegister><p>Criar conta</p></ButtonRegister></Navegate>
                 <Footer/>
             </Main>
 
