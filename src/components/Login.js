@@ -54,13 +54,13 @@ function Login (){
 export default Login;
 
 const Main = styled.main`
+    padding-top:20px;
     position:absolute ;
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    top: 6%;
 
     .user {
         position: relative;
