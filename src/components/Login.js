@@ -111,7 +111,7 @@ const Input = styled.input`
         left: 15px;
         font-family: 'Saira Stencil One', cursive;
         font-style: normal;
-        font-weight: 400,
+        font-weight: 400;
         font-size: 20px;
         line-height: 23px;
     }
