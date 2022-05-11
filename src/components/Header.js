@@ -40,10 +40,12 @@ const HeadPage = styled.header`
     }
     .logo .geek{
         font-family: 'Press Start 2P', cursive;
+        color: green;
        
     }
     .logo .store{
          font-family: 'Parisienne';
+         color: darkblue;
     }
 
 
