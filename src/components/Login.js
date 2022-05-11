@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import Header from './Header';
-/* import api from '.././api/api.js'; */
+import api from '.././components/api/api.js';
 
 function Login (){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    /* async function handleSubmitLogin(e){
+    async function tryLogin(e){
         e.preventDefault();
 
         try {
@@ -18,30 +19,30 @@ function Login (){
                 password
             });
 
+            console.log(email, password);
+
 
 
         } catch (error) {
-
+            console.log(email, password);
         }
 
-    } */
+    }
 
     return (
         <>
             <Header/> 
             <Main>
-                <TitleClient>Já sou cliente</TitleClient>
-                <form>
-                    {/* EMAIL */}
+                <p className='user'>Já sou cliente</p>
+                <form onSubmit={tryLogin}>
                     <Input type="text" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
-
-                    {/* SENHA */}
-                    <Input type="text" value={password} placeholder="Senha" onChange={(e)=>setPassword(e.target.value)}/>
-
-                    {/* BOTÃO ACESSAR CONTA */}
-                    <Button type="submit" /* onClick={handleSubmitLogin} */ ><p>Acessar conta</p></Button>
+                    <Input type="password" value={password} placeholder="Senha" onChange={(e)=>setPassword(e.target.value)}/>
+                    <Button type="submit" ><p>Acessar conta</p></Button>
                 </form>
-                <TitleRegister>Criar conta</TitleRegister>
+                <p className='newUser'>Criar conta</p>
+                
+                <Navegate to='cadastro'><ButtonRegister><p>Criar conta</p></ButtonRegister></Navegate>
+                
             </Main>
         </>
 
@@ -56,26 +57,27 @@ const Main = styled.main`
     height: 100vh;
     display: flex;
     flex-direction: column;
-`
-const TitleClient = styled.p`
-    position: relative;
-    top:50px;
-    left: 25px;
-    font-size: 20px;
-    font-family: 'Saira Stencil One', cursive;
-    color: #000000;
-    cursor: hidden;
+    overflow: hidden;
 
-`
-const TitleRegister = styled.p`
-    position: relative;
-    top:170px;
-    left: 25px;
-    font-size: 20px;
-    font-family: 'Saira Stencil One', cursive;
-    color: #000000;
+    .user {
+        position: relative;
+        top:70px;
+        left: 25px;
+        font-size: 20px;
+        font-family: 'Saira Stencil One', cursive;
+        color: #000000;
+    }
 
+    .newUser{
+        position: relative;
+        top:170px;
+        left: 25px;
+        font-size: 20px;
+        font-family: 'Saira Stencil One', cursive;
+        color: #000000;
+    }
 `
+
 
 const Input = styled.input`
     position: relative;
@@ -136,4 +138,36 @@ const Button = styled.button`
         line-height: 23px;
         color: #FFFFFF;
     }
+`
+
+const ButtonRegister = styled.button`
+    background-color: #5C3782;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid #5C3782;
+    width: 300px;
+    height: 46px;
+    left:39px;
+    top: 190px;
+    cursor: pointer;
+
+    p{
+        position: relative;
+        z-index: 1;
+        font-family: 'Saira Stencil One', cursive;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+        color: #FFFFFF;
+    }
+`
+
+const Navegate = styled(Link)`
+    text-decoration: none;
+
 `
