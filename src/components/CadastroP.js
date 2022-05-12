@@ -14,6 +14,7 @@ function CadastroP (){
 
         event.preventDefault();
 
+        
         api.post('/cadastroP', product)
             .then(()=>{
                 alert('Produto cadastrado com sucesso!');
