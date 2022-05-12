@@ -15,7 +15,7 @@ function Header (){
                 <h1 className='geek'>Geek</h1>
                 <h1 className='store'>store</h1> 
             </div>
-
+            
             <BsCart2 size={'30px'}/>
 
         </HeadPage>

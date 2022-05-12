@@ -42,7 +42,7 @@ function Login (){
                 </form>
                 <p className='newUser'>Criar conta</p>
                 
-                <Navegate to='cadastro'><ButtonRegister><p>Criar conta</p></ButtonRegister></Navegate>
+                <Navegate to='/cadastro'><ButtonRegister><p>Criar conta</p></ButtonRegister></Navegate>
                 <Footer/>
             </Main>
 
@@ -111,7 +111,7 @@ const Input = styled.input`
         left: 15px;
         font-family: 'Saira Stencil One', cursive;
         font-style: normal;
-        font-weight: 400,
+        font-weight: 400;
         font-size: 20px;
         line-height: 23px;
     }
