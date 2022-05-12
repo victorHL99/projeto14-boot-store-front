@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import styled from 'styled-components';
+
 
 import Header from './Header';
 import api from '.././components/api/api.js';
 import Footer from './Footer';
+import TokenContext from './context/Token.js';
 
 function Login (){
+    const context = useContext(TokenContext);
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -20,7 +23,11 @@ function Login (){
 
             .then((response)=>{
                 console.log(response);
-                navigator("/home");
+                const { tokenSession } = response.data;
+                console.log(tokenSession);
+                context.setToken(tokenSession)
+                console.log(context.token);
+                navigator("/");
             })
 
             .catch ((error)=> {

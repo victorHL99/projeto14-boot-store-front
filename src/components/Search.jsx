@@ -17,6 +17,7 @@ export default function Search() {
 const SearchBar = styled.div`
     position: absolute;
     top:60px;
+    z-index: 1;
     width: 100vw;
     height: 80px;
     display: flex;
