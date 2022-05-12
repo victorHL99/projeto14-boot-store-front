@@ -19,11 +19,12 @@ function Login (){
         api.post('/login', { email, password })
 
             .then((response)=>{
-                console.log(email, password);
+                console.log(response);
                 navigator("/home");
             })
 
             .catch ((error)=> {
+                console.log(email, password);
             alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
             console.log(error.response);
             });
