@@ -25,7 +25,7 @@ function Header (){
 
 function CartSummary(){
 
-    const [cartState, setCartState] = useState(true);
+    const [cartState, setCartState] = useState(false);
 
     const linkImg = "https://m.media-amazon.com/images/I/51jWQNDFfIL._AC_SL1000_.jpg";
     const name = 'Caneca Geek Nerd No Coffee No Forcee - Sem Café Sem Força';
@@ -64,7 +64,6 @@ function CartSummary(){
         </CartAndSummary>
     )
 }
-
 
 const HeadPage = styled.header`
 

@@ -8,11 +8,8 @@ import Register from './Register';
 import TokenContext from "./context/Token";
 import CadastroP from "./CadastroP";
 
-
-
 function App(){
     const [token, setToken] = useState({token:null});
-    
     
     return(
 
