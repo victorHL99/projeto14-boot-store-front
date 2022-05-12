@@ -44,7 +44,7 @@ function Home(){
         <Search />
         <Main>
             <div className="containerProducts">
-                {products.map((product)=> <RenderProducts img={product.imagesURL} name={product.name} price={product.price}/>)}
+                {products.map((product)=> <RenderProducts idURL={product._id}img={product.imagesURL} name={product.name} price={product.price}/>)}
             </div>
         </Main>
         <Footer/>
@@ -59,7 +59,6 @@ const Main = styled.main`
     position: relative;
     z-index: 1;
     top:140px;
-    background-color: yellow;
     z-index: 0;
     width: 100vw;
     height: auto;
