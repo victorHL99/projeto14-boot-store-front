@@ -16,8 +16,8 @@ function App(){
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home/>}></Route>
-                <Route path="/item/" element={<Item/>}></Route>
-                <Route path="/login" element={<Login/>}></Route>
+                <Route path="/item/:idItem" element={<Item/>}></Route>
+                <Route path="/login/" element={<Login/>}></Route>
                 <Route path="/cadastro" element={<Register/>}></Route>
                 <Route path="/produto" element={<CadastroP/>}></Route>
             </Routes>

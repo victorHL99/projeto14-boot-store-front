@@ -31,6 +31,7 @@ function CartSummary(){
     const name = 'Caneca Geek Nerd No Coffee No Forcee - Sem Café Sem Força';
     const price = '15,00';
     const total = '345,00';
+    const qtd = 5;
 
     return(
         <CartAndSummary cartState={cartState}>
@@ -42,16 +43,10 @@ function CartSummary(){
                 <p>Resumo do seu pedido!</p>
 
                 <div className='itemsOnResume'>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'><img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
+                    <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
+                    <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
+                    <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
+                    
                 </div>
                 
                 <div className='totalAndSendCheckout'>
@@ -104,7 +99,7 @@ const CartAndSummary= styled.nav`
     }
     .cartResume{
         display: ${(props)=> props.cartState ? 'flex':'none'};
-        width: 230px;
+        width: 275px;
         height: 350px;
         position: absolute;
         right: 0;
@@ -127,7 +122,7 @@ const CartAndSummary= styled.nav`
         overflow: scroll;
     }
     .item{
-        width: 220px;
+        width: 240px;
         display: flex;
         align-items: center;
         justify-content: space-between;
