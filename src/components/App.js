@@ -6,14 +6,14 @@ import Item from "./Item";
 import Login from "./Login";
 import Register from './Register';
 import TokenContext from "./context/Token";
-
+import CadastroP from "./CadastroP";
 
 
 function App(){
     const [token, setToken] = useState({token:null});
     
-    
     return(
+      
         <TokenContext.Provider value={{token, setToken}}>
             <BrowserRouter>
                 <Routes>
@@ -25,7 +25,6 @@ function App(){
             
             </BrowserRouter>
         </TokenContext.Provider>
-
     )
 }
 
