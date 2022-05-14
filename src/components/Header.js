@@ -46,7 +46,6 @@ function CartSummary(){
                     <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
                     <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
                     <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    
                 </div>
                 
                 <div className='totalAndSendCheckout'>
