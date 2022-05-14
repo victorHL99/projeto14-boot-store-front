@@ -69,6 +69,7 @@ const HeadPage = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 15px;
+    margin-bottom: 150px;
 
     .logo{
         display: flex;
@@ -83,7 +84,6 @@ const HeadPage = styled.header`
          font-family: 'Parisienne';
          color: darkblue;
     }
-
 
 `
 

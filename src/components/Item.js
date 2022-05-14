@@ -60,17 +60,17 @@ function Item(){
 
             
         </Main>
-        
         <Footer/>
     </>
 }
-
 
 const Main = styled.main`
     font-weight: bold;
     width: 100%;
     height: 100vh;
-    padding: 75px 15px 75px 15px;
+    padding: 75px 15px 0px 15px;
+    margin-bottom: 300px;
+    
 
     .category{
         border-bottom: 2px solid #E6E6FA;
@@ -136,6 +136,7 @@ const Main = styled.main`
     }
     .additlInfos{
         margin-top: 50px;
+        
     }
     .textAbout{
         font-weight: normal;

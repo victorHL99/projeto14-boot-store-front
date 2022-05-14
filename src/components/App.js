@@ -7,6 +7,7 @@ import Login from "./Login";
 import Register from './Register';
 import TokenContext from "./context/Token";
 import CadastroP from "./CadastroP";
+import Checkout from "./Checkout";
 
 
 function App(){
@@ -18,9 +19,10 @@ function App(){
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home/>}></Route>
-                    <Route path="/item" element={<Item/>}></Route>
+                    <Route path="/item/:idItem" element={<Item/>}></Route>
                     <Route path="/login" element={<Login/>}></Route>
                     <Route path="/cadastro" element={<Register/>}></Route>
+                    <Route path="/checkout" element={<Checkout/>}></Route>
                 </Routes>
             
             </BrowserRouter>
