@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
 import { HiMenu } from 'react-icons/hi';
@@ -9,7 +10,9 @@ function Header (){
 
     const [menu, setMenu] = useState(false);
 
-    function toggleMenu(){
+    const navigate = useNavigate();
+
+    function ShowMenu(){
         if(menu === false){
             return(
                 <HiMenu onClick={()=>setMenu(true)} size={'30px'}/>
@@ -17,6 +20,9 @@ function Header (){
         } else {
             return(
                 <MenuBar>
+                        <div className="Login" onClick={()=>{navigate("/login")}}>Fazer login</div>
+                    <div className="containerCategories" >
+                    </div>
                     <div className="exit">
                         <BsFillXCircleFill onClick={()=>setMenu(false)} size={'30px'}/>
                     </div>
@@ -31,9 +37,9 @@ function Header (){
 
         <HeadPage>
             
-            {toggleMenu()}
+            {ShowMenu()}
 
-            <div className={'logo'}>
+            <div className={'logo'} onClick={()=>{navigate("/")}}>
                 <h1 className='geek'>Geek</h1>
                 <h1 className='store'>store</h1> 
             </div>
@@ -85,6 +91,29 @@ const MenuBar = styled.div`
     .exit{
         position: absolute;
         right: 0;
+    }
+
+    .containerCategories{
+        position: absolute;
+        background: pink;
+        top: 60px;
+        left: 0;
+        width: 250px;
+        height: 350px;
+    }
+    
+    .Login{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Saira Stencil One', cursive;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        background: green;
+        width: 250px;
+        height: 60px;
     }
 
 `
