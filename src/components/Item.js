@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styled from "styled-components";
 import { MdStarHalf } from "react-icons/md";
@@ -9,16 +9,38 @@ import Header from "./Header";
 import Footer from "./Footer";
 import api from "./api/api";
 
+import TokenContext from "./context/Token";
+
 
 function Item(){
 
+    const navigate = useNavigate();
     const {idItem} = useParams();
+
     const [itemInfos, setInfos] = useState({imagesURL:'', name:'', category:'', price:'', description:'', qtsAvailables:'',technicalsInfos:{brand:'', material:'', warranty:''}});
     
+    const [itemToAdd, setItemOnCart] = useState({qtd:1, item:itemInfos});
+
+    const {shopCart, setItemShopCart} = useContext(TokenContext);
+
+    console.log('items to add: ', itemToAdd);
+
+    function addItemShopCart(){
+  
+        setItemShopCart([...shopCart, itemToAdd]);
+
+        navigate('/checkout')
+
+    }
+
+
     useEffect(()=>{
         const config = {headers: {Authorization: `Bearer ${idItem}`}};
         api.get("/item", config)
-            .then((response=>{setInfos(response.data)}))
+            .then((response=>{
+                setInfos(response.data)
+                setItemOnCart({qtd:1, item:response.data})
+            }))
             .catch((err)=>{console.log(err)});},
     []);
 
@@ -38,10 +60,16 @@ function Item(){
                         <p className="price">R$ {itemInfos.price}</p>
                         <p className="available">disponiveis: {itemInfos.qtsAvailables}</p>
                         <p className="userRating">4,3 <MdStarHalf color="yellow"/></p>
-                        
                     </div>
                 </div>
-                <button>Comprar</button>
+
+                <div className="sendInfos">
+                    <p className="remove" onClick={()=>setItemOnCart({...itemToAdd, qtd:itemToAdd.qtd - 1})}>-</p>
+                    <p className="number">{itemToAdd.qtd}</p>
+                    <p className="add" onClick={()=>setItemOnCart({...itemToAdd, qtd:itemToAdd.qtd + 1})}>+</p>
+                    <button onClick={() => addItemShopCart()}>Comprar</button>
+                </div>
+                
             </div>
             
             <div className="additlInfos">
@@ -69,7 +97,7 @@ const Main = styled.main`
     width: 100%;
     height: 100vh;
     padding: 75px 15px 0px 15px;
-    margin-bottom: 300px;
+    margin-bottom: 200px;
     
 
     .category{
@@ -133,6 +161,7 @@ const Main = styled.main`
         font-size: 20px;
         color: #FFF;
         justify-content: center;
+        margin-left: 15px;
     }
     .additlInfos{
         margin-top: 50px;
@@ -168,6 +197,46 @@ const Main = styled.main`
     .table p span{
         font-weight: bold;
     }
+
+    .sendInfos{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+    }
+    .add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 8px;
+        border-radius: 5px;
+        
+        color: #FFF;
+        background-color: green;
+    }
+
+    .remove{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 8px;
+        border-radius: 5px;
+        color: #FFF;
+        background-color: red;
+    }
+    .number{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 10px;
+        border-radius: 5px;
+        border:  1px solid #363636;
+        margin: 0 5px;
+        
+        
+        
+    }
+    
 
 `
 

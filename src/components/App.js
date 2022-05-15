@@ -12,10 +12,12 @@ import Checkout from "./Checkout";
 
 function App(){
     const [token, setToken] = useState({token:null});
+    const [shopCart, setItemShopCart] = useState([]);
     
+    console.log('On App:', shopCart);
     return(
       
-        <TokenContext.Provider value={{token, setToken}}>
+        <TokenContext.Provider value={{token, setToken, shopCart, setItemShopCart}}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home/>}></Route>

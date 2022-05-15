@@ -1,8 +1,10 @@
+import { useState, useEffect, useContext } from 'react';
+
 import styled from 'styled-components';
 
 import { HiMenu } from 'react-icons/hi';
 import { BsCart2 } from 'react-icons/bs';
-import { useState } from 'react';
+import TokenContext from './context/Token';
 
 function Header (){
 
@@ -27,11 +29,7 @@ function CartSummary(){
 
     const [cartState, setCartState] = useState(false);
 
-    const linkImg = "https://m.media-amazon.com/images/I/51jWQNDFfIL._AC_SL1000_.jpg";
-    const name = 'Caneca Geek Nerd No Coffee No Forcee - Sem Café Sem Força';
-    const price = '15,00';
-    const total = '345,00';
-    const qtd = 5;
+    const {shopCart, setItemShopCart} = useContext(TokenContext);
 
     return(
         <CartAndSummary cartState={cartState}>
@@ -43,19 +41,27 @@ function CartSummary(){
                 <p>Resumo do seu pedido!</p>
 
                 <div className='itemsOnResume'>
-                    <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
-                    <div className='item'>{qtd} x <img src={linkImg}></img> <p>{name}</p> <p> R$ {price}</p></div>
+
+                {shopCart.map((item, index) => <ItemsCart key={index} item ={item}/>)}
+           
                 </div>
                 
                 <div className='totalAndSendCheckout'>
-                    <p>Total: <span>{total}</span> </p>
+                    <p>Total: <span></span> </p>
                     <button>Finalizar compra</button>
                 </div>
                 
             </div>
             
         </CartAndSummary>
+    )
+}
+function ItemsCart({item}){
+
+    const {qtd, item:{imagesURL, name, price }} = item;
+
+    return(
+        <div className='item'>{qtd} x <img src={imagesURL}></img> <p>{name}</p> <p> R$ {price}</p></div>
     )
 }
 
@@ -84,9 +90,7 @@ const HeadPage = styled.header`
          font-family: 'Parisienne';
          color: darkblue;
     }
-
 `
-
 const CartAndSummary= styled.nav`
 
     font-family: 'Lato', sans-serif;
