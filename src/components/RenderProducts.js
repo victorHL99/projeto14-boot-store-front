@@ -11,6 +11,7 @@ export default function RenderProducts({idURL,img,name, price}) {
 
     return (
         <ContainerProducts onClick={navigateToProduct}>
+            
             <ImagesProducts src={img} alt=""/>
             <ContainerInfo>
                 <h3>{name}</h3>
