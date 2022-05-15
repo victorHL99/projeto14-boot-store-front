@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { HiMenu } from 'react-icons/hi';
 import { BsCart2 } from 'react-icons/bs';
 import TokenContext from './context/Token';
+import { useNavigate } from 'react-router-dom';
 
 function Header (){
 
@@ -27,9 +28,18 @@ function Header (){
 
 function CartSummary(){
 
+    const navigate = useNavigate()
     const [cartState, setCartState] = useState(false);
 
-    const {shopCart} = useContext(TokenContext);
+
+    const infocart = localStorage.getItem('onShopCart');
+    const shopCart = JSON.parse(infocart);
+    
+
+    let total =  0;
+    
+    shopCart.forEach(element => total += element.item.price * element.qtd);
+    
 
     return(
         <CartAndSummary cartState={cartState}>
@@ -49,8 +59,8 @@ function CartSummary(){
                 </div>
                 
                 <div className='totalAndSendCheckout'>
-                    <p>Total: <span></span> </p>
-                    <button>Finalizar compra</button>
+                    <p>Total: <span> {total.toFixed(2).toString().replace('.',',')}</span> </p>
+                    <button onClick={()=> navigate('/checkout')}>Finalizar compra</button>
                 </div>
                 
             </div>
@@ -61,9 +71,10 @@ function CartSummary(){
 function ItemsCart({item}){
 
     const {qtd, item:{imagesURL, name, price }} = item;
+    const total = (price*qtd).toFixed(2).toString().replace('.',',');
 
     return(
-        <div className='item'>{qtd} x <img src={imagesURL} alt={`imagem do pro produto no carrinho`}></img> <p>{name}</p> <p> R$ {price}</p></div>
+        <div className='item'>{qtd} x <img src={imagesURL} alt={`imagem do pro produto no carrinho`}></img> <p>{name}</p> <p> R$ {total}</p></div>
     )
 }
 
@@ -100,6 +111,7 @@ const CartAndSummary= styled.nav`
     font-weight: bold;
 
     .cart{
+       
         position: absolute;
         top: 0;
         right: 0;
@@ -108,7 +120,6 @@ const CartAndSummary= styled.nav`
         align-items: center;
         justify-content: center;
         flex-direction: row;
-        
         height: 100%;
     }
     .cartIcon{

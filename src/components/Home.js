@@ -33,9 +33,6 @@ function Home(){
 
     },[context.token]);
 
-
-
-    console.log(products);
     
     return(
         <>

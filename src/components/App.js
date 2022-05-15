@@ -11,10 +11,18 @@ import Checkout from "./Checkout";
 
 
 function App(){
-    
+
+    const infocart = localStorage.getItem('onShopCart');
+
+    const shopCartObj = JSON.parse(infocart);
+    console.log("Objeto: ",shopCartObj)
+
     const [token, setToken] = useState({token:null});
-    const [shopCart, setItemShopCart] = useState([]);
-    
+    const [shopCart, setItemShopCart] = useState(shopCartObj||[]);
+    console.log("State:: ",shopCart)
+
+    localStorage.setItem('onShopCart',  JSON.stringify(shopCart));
+
     console.log('On App:', shopCart);
     return(
       

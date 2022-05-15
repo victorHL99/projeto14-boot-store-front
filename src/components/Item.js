@@ -17,7 +17,7 @@ function Item(){
     const navigate = useNavigate();
     const {idItem} = useParams();
 
-    const [itemInfos, setInfos] = useState({imagesURL:'', name:'', category:'', price:'', description:'', qtsAvailables:'',technicalsInfos:{brand:'', material:'', warranty:''}});
+    const [itemInfos, setInfos] = useState({imagesURL:'', name:'', category:'', price:0, description:'', qtsAvailables:'',technicalsInfos:{brand:'', material:'', warranty:''}});
     
     const [itemToAdd, setItemOnCart] = useState({qtd:1, item:itemInfos});
 
@@ -29,8 +29,7 @@ function Item(){
         setItemShopCart([...shopCart, itemToAdd]);
         navigate('/checkout')
     }
-
-
+    
     useEffect(()=>{
         const config = {headers: {Authorization: `Bearer ${idItem}`}};
         api.get("/item", config)
@@ -47,14 +46,14 @@ function Item(){
         <Header/>
 
         <Main>
-            <p className="category">categoria/{itemInfos.category}</p>
+            <p className="category">Categoria/{itemInfos.category} <span onClick={()=> navigate('/')}>voltar</span> </p>
             <div className="primaryInfos">
                 <img src={`${itemInfos.imagesURL}`} alt={`imagem do produto`}/>
 
                 <div>
                     <p className="name">{itemInfos.name}</p>
                     <div className="infos">
-                        <p className="price">R$ {itemInfos.price}</p>
+                        <p className="price">R$ {itemInfos.price.toFixed(2).replace('.',',  ')}</p>
                         <p className="available">disponiveis: {itemInfos.qtsAvailables}</p>
                         <p className="userRating">4,3 <MdStarHalf color="yellow"/></p>
                     </div>
@@ -93,14 +92,29 @@ const Main = styled.main`
     font-weight: bold;
     width: 100%;
     height: 100vh;
-    padding: 75px 15px 0px 15px;
+    padding: 115px 15px 0px 15px;
     margin-bottom: 200px;
     
 
     .category{
+        position: fixed;
         border-bottom: 2px solid #E6E6FA;
-        padding-bottom: 10px;
+        padding: 10px;
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #FFF;
+        width: 100%;
+        left: 0;
+        top: 60px;
+        
+    }
+    .category span{
+        color: #fff;
+        background-color: purple;
+        padding: 3px;
+        border-radius: 5px;
     }
     .primaryInfos{
         display: flex;
