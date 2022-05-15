@@ -44,7 +44,7 @@ function Home(){
         <Search />
         <Main>
             <div className="containerProducts">
-                {products.map((product)=> <RenderProducts idURL={product._id}img={product.imagesURL} name={product.name} price={product.price}/>)}
+                {products.map((product, index)=> <RenderProducts key={index} idURL={product._id}img={product.imagesURL} name={product.name} price={product.price}/>)}
             </div>
         </Main>
         <Footer/>

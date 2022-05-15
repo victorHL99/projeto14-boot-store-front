@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 
 import styled from 'styled-components';
 
@@ -29,12 +29,14 @@ function CartSummary(){
 
     const [cartState, setCartState] = useState(false);
 
-    const {shopCart, setItemShopCart} = useContext(TokenContext);
+    const {shopCart} = useContext(TokenContext);
 
     return(
         <CartAndSummary cartState={cartState}>
-
+            <div className='cart'>
             <BsCart2 className='cartIcon' onClick={()=> setCartState(!cartState)}/>
+            <p className='cartQtd'>{shopCart.length}</p>
+            </div>
 
             <div className='cartResume'>
 
@@ -61,7 +63,7 @@ function ItemsCart({item}){
     const {qtd, item:{imagesURL, name, price }} = item;
 
     return(
-        <div className='item'>{qtd} x <img src={imagesURL}></img> <p>{name}</p> <p> R$ {price}</p></div>
+        <div className='item'>{qtd} x <img src={imagesURL} alt={`imagem do pro produto no carrinho`}></img> <p>{name}</p> <p> R$ {price}</p></div>
     )
 }
 
@@ -97,9 +99,34 @@ const CartAndSummary= styled.nav`
     font-size: 15px;
     font-weight: bold;
 
+    .cart{
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        
+        height: 100%;
+    }
     .cartIcon{
         color: #FFFFFF;
         font-size: 30px;
+       
+    }
+    .cartQtd{
+        color: #FFFFFF;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;     
+        
     }
     .cartResume{
         display: ${(props)=> props.cartState ? 'flex':'none'};
@@ -107,7 +134,7 @@ const CartAndSummary= styled.nav`
         height: 350px;
         position: absolute;
         right: 0;
-        margin: 17px 3px 0 0;        
+        margin: 33px 3px 0 0;        
         align-items: center;
         justify-content: space-between;
         flex-direction: column;

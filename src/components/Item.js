@@ -26,11 +26,8 @@ function Item(){
     console.log('items to add: ', itemToAdd);
 
     function addItemShopCart(){
-  
         setItemShopCart([...shopCart, itemToAdd]);
-
         navigate('/checkout')
-
     }
 
 
@@ -52,7 +49,7 @@ function Item(){
         <Main>
             <p className="category">categoria/{itemInfos.category}</p>
             <div className="primaryInfos">
-                <img src={`${itemInfos.imagesURL}`}/>
+                <img src={`${itemInfos.imagesURL}`} alt={`imagem do produto`}/>
 
                 <div>
                     <p className="name">{itemInfos.name}</p>
