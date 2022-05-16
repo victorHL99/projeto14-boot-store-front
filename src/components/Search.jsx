@@ -23,7 +23,6 @@ const SearchBar = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;
     box-sizing:border-box;
 
 
@@ -31,8 +30,8 @@ const SearchBar = styled.div`
         position: relative;
         background-color: #5d37827b;
         margin-top: ;
-        width:250px;
-        height: 30px;
+        width:300px;
+        height: 35px;
     }
     .searchButton{
         position: relative;

@@ -59,6 +59,6 @@ const Main = styled.main`
     z-index: 0;
     width: 100vw;
     height: auto;
-    bottom: 80px;
+    margin-bottom: 230px;
 
 `
