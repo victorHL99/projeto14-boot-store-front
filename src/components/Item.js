@@ -210,7 +210,6 @@ const Main = styled.main`
         margin: 25px 0 5px 0 ;
         padding-top: 13px;
         border-top: 2px solid #DCDCDC;
-      
     }
     .optionI{
         background-color: #DCDCDC;

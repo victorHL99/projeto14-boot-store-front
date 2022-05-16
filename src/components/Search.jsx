@@ -7,7 +7,7 @@ export default function Search() {
         <SearchBar>
             <form >
                 <input className="searchInput" type="text" placeholder="Pesquisar"/>
-                <button className="searchButton" ><BsSearch size={18}/></button>
+                <button className="searchButton" ><BsSearch color={'#B295CF'} size={25}/></button>
             </form>
         </SearchBar>
     )
@@ -23,23 +23,22 @@ const SearchBar = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;
     box-sizing:border-box;
 
 
     .searchInput{
         position: relative;
-        background-color: #5d37827b;
-        margin-top: ;
-        width:250px;
-        height: 30px;
+        background-color: #B295CF;
+        width:300px;
+        height: 35px;
     }
     .searchButton{
         position: relative;
-        background-color: green;
-        width: 30px;
-        height: 30px;
+        width: auto;
+        top:7px;
+        height: auto;
         border: none;
+        background-color: none;
     }
 
 `

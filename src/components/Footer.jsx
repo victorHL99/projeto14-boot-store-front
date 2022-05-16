@@ -7,15 +7,15 @@ export default function Footer() {
     return (
         <FooterPage>
             <div className="containerFrete">
-                <BsTruck size={44} color="#fff"/>
+                <BsTruck size={44} color={'#B295CF'}/>
                 <h1>Frete Grátis</h1>
             </div>
             <div className="containerTempo">
-                <BsStopwatch size={44} color="#fff"/>
+                <BsStopwatch size={44} color={'#B295CF'}/>
                 <h1>Entrega Expressa</h1>
             </div>
             <div className="containerPagamento">
-                <BsCash size={44} color="#fff"/>
+                <BsCash size={44} color={'#B295CF'}/>
                 <h1>Pagamento Seguro</h1>
             </div>
         </FooterPage>
@@ -39,7 +39,7 @@ const FooterPage = styled.div`
         margin-top:5px;
         font-size: 13px;
         font-family: 'Saira Stencil One', cursive;
-        color: #FFFFFF;
+        color: #B295CF;
     }
 
     .containerFrete {
