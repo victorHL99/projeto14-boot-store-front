@@ -28,6 +28,9 @@ const ContainerProducts = styled.div`
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
+    border-radius: 10px;
+    border: 1px solid #B0C4DE;
+    margin-top: 10px;
 
 `
 
