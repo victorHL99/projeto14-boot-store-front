@@ -4,6 +4,7 @@ import styled from "styled-components";
 import api from './api/api'
 
 import Header from "./Header";
+import Footer from "./Footer";
 
 function Register (){
 
@@ -45,6 +46,8 @@ function Register (){
                 <p>Já é cliente? <span onClick={()=> navigate('/login')} >Entrar</span></p>
 
             </Main>
+
+            <Footer />
         </>
     )
 }
@@ -91,11 +94,6 @@ const Main = styled.main `
         color: blue;
  
     }
-
-
-
-
-
 
 `
 
