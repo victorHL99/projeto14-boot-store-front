@@ -8,16 +8,16 @@ import Register from './Register';
 import TokenContext from "./context/Token";
 
 import Checkout from "./Checkout";
+import Sucess from "./Sucess";
 
 
 function App(){
 
-    
-    
     const infocart = localStorage.getItem('onShopCart');
     const shopCartObj = JSON.parse(infocart);
+    const tokenSession = localStorage.getItem('token');
 
-    const [token, setToken] = useState({token:null});
+    const [token, setToken] = useState(tokenSession);
     const [shopCart, setItemShopCart] = useState(shopCartObj);
 
     if(shopCart === null){
@@ -42,6 +42,7 @@ function App(){
                     <Route path="/login/:type" element={<Login/>}></Route>
                     <Route path="/cadastro" element={<Register/>}></Route>
                     <Route path="/checkout" element={<Checkout/>}></Route>
+                    <Route path="/sucesso/:idPedido" element={<Sucess/>}></Route>
                 </Routes>
             
             </BrowserRouter>

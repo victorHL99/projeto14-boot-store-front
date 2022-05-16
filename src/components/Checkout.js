@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import TokenContext from "./context/Token";
 import Loading from "./Loading";
+import api from "./api/api";
 
 function Checkout(){
 
@@ -23,9 +24,18 @@ function Checkout(){
     setTimeout(()=>setLoading(false),1500);
 
     function finalize(){
-        token.token === null
+        const config = {headers: {Authorization: `Bearer ${token}`}};
+
+        token === null
         ?navigate('/login/checkout')
-        :navigate('/sucess')
+        :(
+            api.post('/checkout', shopCart, config)
+            .then((response)=>{
+                navigate(`/sucesso/${response.data}`)
+            })
+            .catch((erro=> console.log("Erro ao enviar pedido", erro)))
+
+        )
     }
 
     return loading ? <Loading/>:
@@ -72,7 +82,7 @@ function Items({item}){
 
         const infocart = localStorage.getItem('onShopCart');
         const shopCartObj = JSON.parse(infocart);
-        console.log('name::::::', name  )
+        
 
         const newShopCart = shopCartObj.filter((value) => value.item.name !== name)
 
