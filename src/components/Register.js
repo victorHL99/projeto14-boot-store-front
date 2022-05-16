@@ -43,7 +43,7 @@ function Register (){
                     <ButtonRegister><p>Cadastrar</p></ButtonRegister>
                 </form>
 
-                <p>Já é cliente? <span onClick={()=> navigate('/login')} >Entrar</span></p>
+                <p>Já é cliente? <span onClick={()=> navigate('/login/cadastro')} >Entrar</span></p>
 
             </Main>
 
