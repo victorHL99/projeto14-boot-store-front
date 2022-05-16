@@ -18,7 +18,7 @@ function Checkout(){
     shopCart.forEach(element => {
         total += element.item.price * element.qtd;
     });
-    console.log('token', token);
+
 
     setTimeout(()=>setLoading(false),1500);
 
@@ -72,13 +72,10 @@ function Items({item}){
 
         const infocart = localStorage.getItem('onShopCart');
         const shopCartObj = JSON.parse(infocart);
-        console.log('name::::::', name  )
-
+        
         const newShopCart = shopCartObj.filter((value) => value.item.name !== name)
 
         setItemShopCart(newShopCart);
-
-
     }
     
     
