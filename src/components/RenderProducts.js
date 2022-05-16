@@ -19,7 +19,7 @@ export default function RenderProducts({idURL,img,name, price}) {
                     <h3>{name}</h3>
                 </div>
                     <h5>Valor: R${price},00</h5>
-                    <a href="#" className="myButton">Comprar</a>
+                    <div className="myButton">Comprar</div>
             </ContainerInfo>
             
         </ContainerProducts>

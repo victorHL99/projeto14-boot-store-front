@@ -152,8 +152,6 @@ const HeadPage = styled.header`
     .logo .store{
         font-family: 'Parisienne';
         color: darkblue;
-        font-family: 'Parisienne';
-        color: darkblue;
     }
 `
 const CartAndSummary= styled.nav`
