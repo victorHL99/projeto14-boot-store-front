@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -6,7 +6,9 @@ import styled from 'styled-components';
 import { HiMenu } from 'react-icons/hi';
 import { BsCart2 } from 'react-icons/bs';
 import {BsFillXCircleFill} from 'react-icons/bs';
+import api from '../components/api/api.js';
 import TokenContext from './context/Token';
+import RenderCategory from './RenderCategory';
 
 
 function Header (){
@@ -15,6 +17,31 @@ function Header (){
     const navigate = useNavigate();
 
     function ShowMenu(){
+        const context = useContext(TokenContext);
+        const [products, setProducts] = useState([]);
+
+
+
+        useEffect(()=>{
+            const config ={
+                headers: {
+                    Authorization: `Bearer ${context.token}`
+                }
+            }
+
+            api.get('/', config)
+            .then((response)=>{
+                const ObjectProducts = response.data;
+                setProducts(ObjectProducts);
+            })
+            .catch((error)=>{
+                console.log(error);
+            });
+
+        },[context.token]);
+
+        
+
         if(menu === false){
             return(
                 <HiMenu onClick={()=>setMenu(true)} size={'30px'}/>
@@ -22,8 +49,11 @@ function Header (){
         } else {
             return(
                 <MenuBar>
-                        <div className="Login" onClick={()=>{navigate("/login")}}>Fazer login</div>
+                        <div className="Login" onClick={()=>{navigate("/login")}}>
+                            Fazer login
+                        </div>
                     <div className="containerCategories" >
+                        {products.map((product, index)=> <RenderCategory key={index} category={product.category} idURL={product._id} name={product.name}/>)}
                     </div>
                     <div className="exit">
                         <BsFillXCircleFill onClick={()=>setMenu(false)} size={'30px'}/>
@@ -230,22 +260,28 @@ const CartAndSummary= styled.nav`
 
 const MenuBar = styled.div`
     position: absolute;
-    top: 60px;
+    z-index: 3;
+    top: 50px;
     left: 0;
     width: 300px;
     height: 500px;
-    background: yellow;
+
     .exit{
         position: absolute;
         right: 0;
     }
     .containerCategories{
         position: absolute;
-        background: pink;
+        background-color: #5C3782;
         top: 60px;
         left: 0;
         width: 250px;
         height: 350px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        overflow: scroll;
+
     }
     
     .Login{
@@ -262,6 +298,5 @@ const MenuBar = styled.div`
         height: 60px;
     }
 `
-
 
 export default Header; 
