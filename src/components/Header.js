@@ -74,10 +74,7 @@ function Header (){
                 <h1 className='store'>store</h1> 
             </div>
 
-            <h1 onClick={()=>{
-                localStorage.removeItem('onShopCart')
-            }}>Resetar</h1>
-            
+           
             <CartSummary/>
 
         </HeadPage>
