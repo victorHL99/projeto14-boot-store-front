@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import api from "./api/api";
 
 import TokenContext from "./context/Token";
+import { HiShoppingBag } from "react-icons/hi";
 
 
 function Item(){
@@ -26,7 +27,22 @@ function Item(){
     console.log('items to add: ', itemToAdd);
 
     function addItemShopCart(){
-        setItemShopCart([...shopCart, itemToAdd]);
+        const infocart = localStorage.getItem('onShopCart');
+        let shopCartObj = JSON.parse(infocart);
+
+        console.log("olhaa: ", shopCartObj)
+
+        shopCartObj = [...shopCart, itemToAdd];
+        console.log("novo cart:", shopCartObj);
+
+        localStorage.setItem('onShopCart',  JSON.stringify(shopCartObj));
+        
+        const getNewShopCart = localStorage.getItem('onShopCart');
+        console.log("newspc: ", getNewShopCart)
+        let newShopCartToSet = JSON.parse(getNewShopCart);
+        console.log('To get: ', newShopCartToSet);
+    
+        setItemShopCart(newShopCartToSet);
         navigate('/checkout')
     }
     

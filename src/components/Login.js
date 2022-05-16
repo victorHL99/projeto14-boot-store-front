@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -9,33 +9,28 @@ import Footer from './Footer';
 import TokenContext from './context/Token.js';
 
 function Login (){
-    const context = useContext(TokenContext);
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
     const navigator = useNavigate();
+    const {type} = useParams();
+    const {token, setToken, shopCart } = useContext(TokenContext);
 
+    const [ user, setUser ] = useState({email:'', password:'', shopCart:shopCart})
+     
+    
     async function tryLogin(e){
         e.preventDefault();
 
-        api.post('/login', { email, password })
-
+        api.post('/login', user)
             .then((response)=>{
-                console.log(response);
                 const { tokenSession } = response.data;
-                console.log(tokenSession);
-                context.setToken(tokenSession)
-                console.log(context.token);
-                navigator("/");
+                setToken({token:response.data});
+                type === 'checkout' ? navigator('/checkout/finalize') : navigator("/");
             })
 
             .catch ((error)=> {
-                console.log(email, password);
-            alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
-            console.log(error.response);
+                alert("Ops! Infelizmente aconteceu um erro! Tente novamente!");
+                console.log(error.response);
             });
-
     }
 
     return (
@@ -44,8 +39,8 @@ function Login (){
             <Main>
                 <p className='user'>Já sou cliente</p>
                 <form onSubmit={tryLogin}>
-                    <Input type="text" value={email} placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
-                    <Input type="password" value={password} placeholder="Senha" onChange={(e)=>setPassword(e.target.value)}/>
+                    <Input type="text" value={user.email} placeholder="Email" onChange={(e)=>setUser({...user, email: e.target.value})}/>
+                    <Input type="password" value={user.password} placeholder="Senha" onChange={(e)=>setUser({...user, password: e.target.value})}/>
                     <Button type="submit" ><p>Acessar conta</p></Button>
                 </form>
                 <p className='newUser'>Criar conta</p>

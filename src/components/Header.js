@@ -43,6 +43,10 @@ function Header (){
                 <h1 className='geek'>Geek</h1>
                 <h1 className='store'>store</h1> 
             </div>
+
+            <h1 onClick={()=>{
+                localStorage.removeItem('onShopCart')
+            }}>Resetar</h1>
             
             <CartSummary/>
 
@@ -55,11 +59,8 @@ function CartSummary(){
     const navigate = useNavigate()
     const [cartState, setCartState] = useState(false);
 
-
     const infocart = localStorage.getItem('onShopCart');
     const shopCart = JSON.parse(infocart);
-
-
     let total =  0;
 
     shopCart.forEach(element => total += element.item.price * element.qtd);
