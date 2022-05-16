@@ -10,8 +10,6 @@ import Footer from "./Footer";
 import api from "./api/api";
 
 import TokenContext from "./context/Token";
-import { HiShoppingBag } from "react-icons/hi";
-
 
 function Item(){
 
@@ -19,28 +17,16 @@ function Item(){
     const {idItem} = useParams();
 
     const [itemInfos, setInfos] = useState({imagesURL:'', name:'', category:'', price:0, description:'', qtsAvailables:'',technicalsInfos:{brand:'', material:'', warranty:''}});
-    
     const [itemToAdd, setItemOnCart] = useState({qtd:1, item:itemInfos});
-
     const {shopCart, setItemShopCart} = useContext(TokenContext);
-
-    console.log('items to add: ', itemToAdd);
 
     function addItemShopCart(){
         const infocart = localStorage.getItem('onShopCart');
         let shopCartObj = JSON.parse(infocart);
-
-        console.log("olhaa: ", shopCartObj)
-
         shopCartObj = [...shopCart, itemToAdd];
-        console.log("novo cart:", shopCartObj);
-
         localStorage.setItem('onShopCart',  JSON.stringify(shopCartObj));
-        
         const getNewShopCart = localStorage.getItem('onShopCart');
-        console.log("newspc: ", getNewShopCart)
         let newShopCartToSet = JSON.parse(getNewShopCart);
-        console.log('To get: ', newShopCartToSet);
     
         setItemShopCart(newShopCartToSet);
         navigate('/checkout')
@@ -59,57 +45,67 @@ function Item(){
     return itemInfos.name === ''
     ?   <Loading/>
     :<>
+    <Body>
         <Header/>
+            <Main>
+                <p className="category">Categoria/{itemInfos.category} <span onClick={()=> navigate('/')}>voltar</span> </p>
+                <div className="primaryInfos">
+                    <img src={`${itemInfos.imagesURL}`} alt={`imagem do produto`}/>
 
-        <Main>
-            <p className="category">Categoria/{itemInfos.category} <span onClick={()=> navigate('/')}>voltar</span> </p>
-            <div className="primaryInfos">
-                <img src={`${itemInfos.imagesURL}`} alt={`imagem do produto`}/>
-
-                <div>
-                    <p className="name">{itemInfos.name}</p>
-                    <div className="infos">
-                        <p className="price">R$ {itemInfos.price.toFixed(2).replace('.',',  ')}</p>
-                        <p className="available">disponiveis: {itemInfos.qtsAvailables}</p>
-                        <p className="userRating">4,3 <MdStarHalf color="yellow"/></p>
+                    <div>
+                        <p className="name">{itemInfos.name}</p>
+                        <div className="infos">
+                            <p className="price">R$ {itemInfos.price.toFixed(2).replace('.',',  ')}</p>
+                            <p className="available">disponiveis: {itemInfos.qtsAvailables}</p>
+                            <p className="userRating">4,3 <MdStarHalf color="yellow"/></p>
+                        </div>
                     </div>
-                </div>
 
-                <div className="sendInfos">
-                    <p className="remove" onClick={()=>setItemOnCart({...itemToAdd, qtd:itemToAdd.qtd - 1})}>-</p>
-                    <p className="number">{itemToAdd.qtd}</p>
-                    <p className="add" onClick={()=>setItemOnCart({...itemToAdd, qtd:itemToAdd.qtd + 1})}>+</p>
-                    <button onClick={() => addItemShopCart()}>Comprar</button>
+                    <div className="sendInfos">
+                        <p className="remove" onClick={()=>setItemOnCart({...itemToAdd, qtd:itemToAdd.qtd - 1})}>-</p>
+                        <p className="number">{itemToAdd.qtd}</p>
+                        <p className="add" onClick={()=>setItemOnCart({...itemToAdd, qtd:itemToAdd.qtd + 1})}>+</p>
+                        <button onClick={() => addItemShopCart()}>Comprar</button>
+                    </div>
+                    
                 </div>
                 
-            </div>
-            
-            <div className="additlInfos">
-                <p className="about">Descrição:</p>
-                <p className="textAbout">{itemInfos.description}</p>
+                <div className="additlInfos">
+                    <p className="about">Descrição:</p>
+                    <p className="textAbout">{itemInfos.description}</p>
 
-                <p className="infoTable">Detalhes tecnicos:</p>
-                <div className="table">
-                    
-                    <p className="optionI"><span>Marca:</span> {itemInfos.technicalsInfos.brand}</p>
-                    <p className="optionP"><span>Material:</span> {itemInfos.technicalsInfos.material}</p>
-                    <p className="optionI"><span>Garantia:</span> {itemInfos.technicalsInfos.warranty}</p>
+                    <p className="infoTable">Detalhes tecnicos:</p>
+                    <div className="table">
+                        
+                        <p className="optionI"><span>Marca:</span> {itemInfos.technicalsInfos.brand}</p>
+                        <p className="optionP"><span>Material:</span> {itemInfos.technicalsInfos.material}</p>
+                        <p className="optionI"><span>Garantia:</span> {itemInfos.technicalsInfos.warranty}</p>
+                    </div>
+
                 </div>
 
-            </div>
-
-            
-        </Main>
+                
+            </Main>
         <Footer/>
+
+    </Body>
+
+        
     </>
 }
 
+const Body = styled.div`
+    position: absolute;
+    display: flex;
+
+`
+
 const Main = styled.main`
     font-weight: bold;
-    width: 100%;
-    height: 100vh;
-    padding: 115px 15px 0px 15px;
-    margin-bottom: 200px;
+    width: 100vw;
+    padding: 65px 15px 0px 15px;
+    margin-top: 65px;
+    margin-bottom: 85px;
     
 
     .category{
