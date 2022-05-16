@@ -44,7 +44,7 @@ function Header (){
 
         if(menu === false){
             return(
-                <HiMenu onClick={()=>setMenu(true)} size={'30px'}/>
+                <HiMenu onClick={()=>setMenu(true)} color={'#B295CF'} size={'30px'}/>
             )
         } else {
             return(
@@ -263,21 +263,27 @@ const MenuBar = styled.div`
     z-index: 3;
     top: 50px;
     left: 0;
-    width: 300px;
+    width: 350px;
     height: 500px;
+    border: 10px;
+    background: #B295CF;
 
     .exit{
+        color:#9357CF;
         position: absolute;
-        right: 0;
+        right: 10px;
+        top:15px;
     }
     .containerCategories{
         position: absolute;
-        background-color: #5C3782;
-        top: 60px;
-        left: 0;
-        width: 250px;
-        height: 350px;
+        background-color: #B295CF;
+        top: 80px;
+        width: 350px;
+        height: 415px;
         display: flex;
+        border:5px;
+        flex-direction: column;
+        align-items: center;
         flex-wrap: wrap;
         flex-direction: row;
         overflow: scroll;
@@ -289,13 +295,15 @@ const MenuBar = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: 'Saira Stencil One', cursive;
         font-style: normal;
+        border-radius: 5px;
         font-weight: 400;
         font-size: 20px;
-        background: green;
-        width: 250px;
+        background-color: #9357CF;
+        width: 300px;
         height: 60px;
+        color: #FFFFFF;
+        margin-bottom: 10px;
     }
 `
 

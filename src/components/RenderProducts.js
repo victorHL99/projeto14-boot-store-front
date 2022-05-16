@@ -33,7 +33,7 @@ const ContainerProducts = styled.div`
     align-items: center;
     flex-wrap: nowrap;
     border-radius: 10px;
-    border: 2px solid #5C3782;
+    border: 2px solid #B295CF;
     margin-top: 10px;
 
 `

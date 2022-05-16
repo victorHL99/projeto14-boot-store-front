@@ -45,7 +45,7 @@ const ButtonCategory = styled.div`
     border-radius: 5px;
     border: 1px solid #B0C4DE;
     background-color: #FFFFFF;
-    width: 250px;
+    width: 300px;
     height: 50px;
     cursor: pointer;
     &:hover{
