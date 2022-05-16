@@ -44,19 +44,19 @@ function Header (){
 
         if(menu === false){
             return(
-                <HiMenu onClick={()=>setMenu(true)} color={'#B295CF'} size={'30px'}/>
+                <HiMenu onClick={()=>setMenu(true)} cursor={'pointer'} color={'#B295CF'} size={'30px'}/>
             )
         } else {
             return(
                 <MenuBar>
-                        <div className="Login" onClick={()=>{navigate("/login/cadastro")}}>
+                        <div className="Login" onClick={()=>{navigate("/login")}}>
                             Fazer login
                         </div>
                     <div className="containerCategories" >
                         {products.map((product, index)=> <RenderCategory key={index} category={product.category} idURL={product._id} name={product.name}/>)}
                     </div>
                     <div className="exit">
-                        <BsFillXCircleFill onClick={()=>setMenu(false)} size={'30px'}/>
+                        <BsFillXCircleFill cursor={'pointer'} onClick={()=>setMenu(false)} size={'30px'}/>
                     </div>
                 </MenuBar>
             )
@@ -74,7 +74,6 @@ function Header (){
                 <h1 className='store'>store</h1> 
             </div>
 
-           
             <CartSummary/>
 
         </HeadPage>
@@ -144,6 +143,7 @@ const HeadPage = styled.header`
     .logo{
         display: flex;
         flex-direction: row;
+        cursor:pointer;
     }
     .logo .geek{
         font-family: 'Press Start 2P', cursive;
@@ -152,14 +152,13 @@ const HeadPage = styled.header`
     .logo .store{
         font-family: 'Parisienne';
         color: darkblue;
-        font-family: 'Parisienne';
-        color: darkblue;
     }
 `
 const CartAndSummary= styled.nav`
     font-family: 'Lato', sans-serif;
     font-size: 15px;
     font-weight: bold;
+    cursor:pointer;
     .cart{
         position: absolute;
         top: 0;
@@ -244,6 +243,7 @@ const CartAndSummary= styled.nav`
         justify-content: space-between;
         border-top: 1px solid white;
         padding: 5px 0 5px 0;
+        cursor:pointer;
     }
     .totalAndSendCheckout button{
         background-color: #00FF00;
@@ -253,6 +253,7 @@ const CartAndSummary= styled.nav`
         padding: 5px;
         margin-bottom: 10px;
         border: none;
+        cursor:pointer;
     }
 `
 
@@ -302,6 +303,7 @@ const MenuBar = styled.div`
         height: 60px;
         color: #FFFFFF;
         margin-bottom: 10px;
+        cursor:pointer;
     }
 `
 

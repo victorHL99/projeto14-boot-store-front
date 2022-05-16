@@ -15,7 +15,6 @@ function Login (){
     const {token, setToken, shopCart } = useContext(TokenContext);
 
     const [ user, setUser ] = useState({email:'', password:'', shopCart:shopCart})
-     
     
     async function tryLogin(e){
         e.preventDefault();
