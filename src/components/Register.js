@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import api from './api/api'
 
 import Header from "./Header";
 import Footer from "./Footer";
+import TokenContext from "./context/Token";
 
 function Register (){
 
     const navigate = useNavigate();
-
+    const {setToken} = useContext(TokenContext)
     const [datasToRegister, setDatas] = useState({name:'', email:'', password:'', passwordConf:''});
     console.log(datasToRegister);
 
@@ -20,6 +21,8 @@ function Register (){
         api
         .post('/register', datasToRegister)
             .then((response)=>{
+                localStorage.setItem('token', `${response.data.tokenSession}`)
+                setToken(response.data.tokenSession)
                 console.log('O registro ta safe!', response.data); // apagar esse console
                 
                 navigate('/');
