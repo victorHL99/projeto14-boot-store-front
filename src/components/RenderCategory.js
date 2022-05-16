@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {useContext, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
 
 import TokenContext from './context/Token';
 
@@ -8,19 +7,18 @@ export default function Category({category, idURL, name, img}) {
 
     const context = useContext(TokenContext);
 
-    const navigate = useNavigate();
     console.log(context.token);
 
     useEffect(()=>{
-        
-    },[context.token]);
-    
-    function navigateToProduct() {
         const config ={
             headers: {
                 Authorization: `Bearer ${context.token}`
             }
         }
+    },[context.token]);
+    
+    function navigateToProduct() {
+        
             console.log(context.token)
             window.location.href = `/item/${idURL}`;
         }
