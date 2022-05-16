@@ -47,7 +47,7 @@ const ImagesProducts = styled.img`
     background-color: none;
     margin-bottom: 20px;
     margin-right: 20px;
-
+    cursor: pointer;
 
 `
 const ContainerInfo = styled.div`

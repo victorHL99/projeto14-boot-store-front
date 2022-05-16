@@ -7,7 +7,7 @@ export default function Search() {
         <SearchBar>
             <form >
                 <input className="searchInput" type="text" placeholder="Pesquisar"/>
-                <button className="searchButton" ><BsSearch color={'#B295CF'} size={25}/></button>
+                <button className="searchButton" ><BsSearch cursor={'pointer'} color={'#B295CF'} size={25}/></button>
             </form>
         </SearchBar>
     )
