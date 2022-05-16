@@ -49,7 +49,7 @@ function Header (){
         } else {
             return(
                 <MenuBar>
-                        <div className="Login" onClick={()=>{navigate("/login")}}>
+                        <div className="Login" onClick={()=>{navigate("/login/")}}>
                             Fazer login
                         </div>
                     <div className="containerCategories" >
