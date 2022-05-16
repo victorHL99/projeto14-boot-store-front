@@ -12,18 +12,26 @@ import Checkout from "./Checkout";
 
 function App(){
 
+    
+    
     const infocart = localStorage.getItem('onShopCart');
-
     const shopCartObj = JSON.parse(infocart);
-    console.log("Objeto: ",shopCartObj)
 
     const [token, setToken] = useState({token:null});
-    const [shopCart, setItemShopCart] = useState(shopCartObj||[]);
-    console.log("State:: ",shopCart)
+    const [shopCart, setItemShopCart] = useState(shopCartObj);
+
+    if(shopCart === null){
+        localStorage.setItem('onShopCart', '[]');
+
+        const infoCartInitial = localStorage.getItem('onShopCart');
+        const shopCartObjInitial = JSON.parse(infoCartInitial);
+        
+        setItemShopCart(shopCartObjInitial);
+   }
 
     localStorage.setItem('onShopCart',  JSON.stringify(shopCart));
 
-    console.log('On App:', shopCart);
+   
     return(
       
         <TokenContext.Provider value={{token, setToken, shopCart, setItemShopCart}}>
@@ -31,7 +39,7 @@ function App(){
                 <Routes>
                     <Route path="/" element={<Home/>}></Route>
                     <Route path="/item/:idItem" element={<Item/>}></Route>
-                    <Route path="/login" element={<Login/>}></Route>
+                    <Route path="/login/:type" element={<Login/>}></Route>
                     <Route path="/cadastro" element={<Register/>}></Route>
                     <Route path="/checkout" element={<Checkout/>}></Route>
                 </Routes>
